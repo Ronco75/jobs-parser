@@ -12,12 +12,13 @@ with open('config.json', 'r') as config_file:
 KEYWORDS = config['keywords']
 CHECK_INTERVAL = config['check_interval']
 JOBS_FILE = 'previous_jobs.json'
-
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 
 def send_telegram_message(message):
-        url = f"https://api.telegram.org/bot{os.getenv("BOT_TOKEN")}/sendMessage"
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
         payload= {
-                "chat_id": os.getenv("CHAT_ID"),
+                "chat_id": CHAT_ID,
                 "text": message,
                 "parse_mode": "HTML"
         }
